@@ -1,5 +1,4 @@
 language: cpp
-
 notifications:
   email: false
 
@@ -11,13 +10,18 @@ matrix:
   - os: linux
 
 before_script:
-  - pip install conan
-  - conan remote add yage-server $REPOSITORY_URL
-  - conan user -p $REPOSITORY_KEY -r $REPOSITORY_URL bentoudev
+- pip install conan
+- conan remote add yage-server $REPOSITORY_URL
+- conan user -p $REPOSITORY_KEY -r $REPOSITORY_URL bentoudev
 
 script:
-  - conan install
-  - conan package
+- conan install
+- conan package
 
 after_success:
-  - conan upload named-type/1.0@bentoudev/stable -r yage-server -c --retry 3 --retry-wait 62
+- conan upload named-type/1.0@bentoudev/stable -r yage-server -c --retry 3 --retry-wait 62 --force
+
+env:
+  global:
+  - secure: muk8Wk1GnI/EqsZ+hIRTe2WHvU6AT0/dFROvKYo9c+tp1kIX8HC/jmSOR8Dq2t7MViuGXzmiogyv3K7I5n+wJ7wHQ7CQ7mkozS96HcueV2IdhRZLSWz1WiH0WQ+zfuLvYW5qq5qA3HIW6Z8QVchOXlhT8U82O9GuroVDiN3wgS5HhkL+cTYya8BVLgUURJm+6L9OF/Om6gvrpEERet2Ms6XpFnJvz0nZI3PlPn8zW662w9GpOH/duw2SPFaO3cHQtsjqgtztED+jUc1Q0FIlkXg7OSocWtISL0Tn0iaGaDOJWsYToljVxqlHIROuILvtU0iSZyhwAoRYmy2yLncbGUnOwTpxZruS86MAQqsZj/dUbEDZvRrOPaWaPgeFWqgZvAkV/TsBTctWwGrKY0cAH9RoRbORL9MUwHbePxqptCjF+k5QwOtGRcTF+gNm+EK1vspFatGzifBzF9hJTiWkCDV8jVUETSBIjGfiOAcYh4ULzJYBwMeqbr1qIQ3WyS9jcqYh1jEekW0Atqo0SHd3tAAlXoC4ll3F2PdOuoVoJFXOyxFvnx3+8UafL23Uw8h56swsxrcpw5G6+MXn14Sb86Jms6se0F1BMTp04pMeL/buPXgEjPfDfWfP4iX/KkF6T+rlbHuzaGGgpU/zTu/Mp9erIYPovi7U5lcpir5icvI=
+  - secure: ke0bNAIMKjUTElFDYUEe2FhAiTzCMOsvDXiwrwdMNIy05Qnb9T7OHInN3tf0w13PFtAmRqB4HmDMOtU1N7KqvIMgINPSHSpNbTDWPVY0NbR8/yMF8458ljfDBStfAnyc1SEx/q7Mn0CwEuvM0oZSRU664hFVNDhSSLX8RXaVAGzNbd47Pkn1gHchtA8plfiNub+OwO9yD49i2LKkzyvfAlE/IJwju7Lot7q6JmrdtE0ecb29Xe8r63FKg5rOBYDCXSwO6eqe5pYp7g6AV6RGhArcKUs/7yQO9l01A2axDhc56ESkC2awyBdSsvw/48hp9GTEI34Mx1IAJSRJ2Pi0KgTa/5b6/Px81LFlB0HYTDYkv1fcBB9A8lvnZ6v9HUeYLizMsVavT3sk49LzJAN+FTQKp6tXD7C49qLMU+rL6pwh+2UCAN85V89MCUp6kRjtwMRiTdGGJNWRK+6eTJLD/lXP7fT3mj1GklxyfSyGGciUZUCbZ1+ccbUH5Tku8dyU0diKtK7/vIGUIXeD9tM6xK7dT0wEbRzvHuaZl5kk5FAPpSlpepKkUqsis2cynDKRnBFFnAwuKfiRIhhHZ44sZVoFg0G1z0KOVBO3jcnz2bNNOZarcNQ6Hs0sQufK/o+YQSK9zHHRqQMpewrk3YdKhJ6onmy+EtomNj9zFLrl6iQ=
