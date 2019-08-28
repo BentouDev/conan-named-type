@@ -1,0 +1,3 @@
+[submodule "named-type-source"]
+	path = named-type-source
+	url = https://github.com/joboccara/NamedType.git

@@ -1,0 +1,23 @@
+language: cpp
+
+notifications:
+  email: false
+
+sudo: false
+dist: trusty
+
+matrix:
+  include:
+  - os: linux
+
+before_script:
+  - pip install conan
+  - conan remote add yage-server $REPOSITORY_URL
+  - conan user -p $REPOSITORY_KEY -r $REPOSITORY_URL bentoudev
+
+script:
+  - conan install
+  - conan package
+
+after_success:
+  - conan upload named-type/1.0@bentoudev/stable -r yage-server -c --retry 3 --retry-wait 62
