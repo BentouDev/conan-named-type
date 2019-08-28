@@ -3,14 +3,14 @@ notifications:
   email: false
 
 sudo: false
-dist: trusty
+dist: bionic
 
 matrix:
   include:
   - os: linux
 
 before_script:
-- pip install conan
+- pip install conan --quiet --upgrade
 - conan remote add yage-server $REPOSITORY_URL
 - conan user -p $REPOSITORY_KEY -r $REPOSITORY_URL bentoudev
 
